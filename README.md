@@ -7,6 +7,27 @@ The dataset included in this repository is located at  "datav2.xlsx". The datase
 ## CODE
 The python code in this repository  is located in the Python file "ExtortionREVIEW.py", additional project files are included for running the project in Visual Studio 2022.
 
+## REQUIREMENTS
+
+Install Miniconda and create the environment "extortion" with Python 3.9. Install the packages spacy, pandas, scikit-learn, and matplotlib in the environment following the steps: 
+
+$conda create --name extortion python=3.9
+
+$conda activate extortion
+
+$conda install -c conda-forge spacy
+
+$python -m spacy download en_core_web_sm
+
+$conda install -c conda-forge pandas
+
+$conda install -c conda-forge scikit-learn
+
+$conda install -c conda-forge matplotlib
+
+Add the environment to an IDE such as Visual Studio.
+
+
 ## INPUT FILES  AND PRODUCED FILES
 
 Input files: 
@@ -27,7 +48,7 @@ Output Files:
 
 ## INSTRUCTIONS 
 
-Download the Visual Studio Project and/or run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
+Download the Visual Studio Project and run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
 
 The process contains the following steps:
 
@@ -43,25 +64,7 @@ Fourth,  the confusion matrix is obtained, where the algorithm's prediction is c
 Follow the REQUIREMENTS for installing a Miniconda or Conda environment with package dependencies.
 
 
-## REQUIREMENTS
 
-Install Miniconda and create the environment "extortion" with Python 3.9. Install the packages spacy, pandas, scikit-learn, and matplotlib in the environment following the steps: 
-
-$conda create --name extortion python=3.9
-
-$conda activate extortion
-
-$conda install -c conda-forge spacy
-
-$python -m spacy download en_core_web_sm
-
-$conda install -c conda-forge pandas
-
-$conda install -c conda-forge scikit-learn
-
-$conda install -c conda-forge matplotlib
-
-Add the environment to an IDE such as Visual Studio.
 
 
 
