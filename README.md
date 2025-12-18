@@ -6,7 +6,9 @@ This repository contains the code for extortion detection in Spanish  peruvian  
 Install Miniconda and create the environment "extortion" with Python 3.9. Install the packages spacy, pandas, scikit-learn, and matplotlib in the environment following the steps: 
 
 $conda create --name extortion python=3.9
+
 $conda activate extortion
+
 $conda install -c conda-forge spacy
 $python -m spacy download en_core_web_sm
 $conda install -c conda-forge pandas
