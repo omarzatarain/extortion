@@ -46,6 +46,8 @@ Output Files:
       
       "confusion_matrix.xlsx": The comparison between the results in classified_sentences and the gold-standard
 
+THe output files are provided for the convenience of the readers of this repository.
+
 ## INSTRUCTIONS 
 
 Download the Visual Studio Project and run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
