@@ -46,7 +46,7 @@ Output Files:
       
       "confusion_matrix.xlsx": The comparison between the results in classified_sentences and the gold-standard
 
-THe output files are provided for the convenience of the readers of this repository.
+The output files will be generated on  experiments reproduction, however, the output files are provided for the convenience of the readers of this repository.
 
 ## INSTRUCTIONS 
 
