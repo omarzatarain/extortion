@@ -9,7 +9,7 @@ The python code in this repository  is located in the Python file "ExtortionREVI
 
 ## REQUIREMENTS
 
-Install Miniconda and create the environment "extortion" with Python 3.9. Install the packages spacy, pandas, scikit-learn, and matplotlib in the environment following the steps: 
+Install Miniconda and create the environment "extortion" with Python 3.9. Install the packages spacy, pandas, scikit-learn, matplotlib  and pysentimiento in the environment following the steps: 
 
 $conda create --name extortion python=3.9
 
@@ -24,6 +24,8 @@ $conda install -c conda-forge pandas
 $conda install -c conda-forge scikit-learn
 
 $conda install -c conda-forge matplotlib
+
+$ pip install pysentimiento
 
 Add the environment to an IDE such as Visual Studio.
 
