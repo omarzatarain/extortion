@@ -65,10 +65,3 @@ Follow the REQUIREMENTS for installing a Miniconda or Conda environment with pac
 
 
 
-
-
-
-## STEPS FOR REPRODUCE THE EXPERIMENTS 
-
-After installing the dependencies and loading the extortion environment, load the   
-
