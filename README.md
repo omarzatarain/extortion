@@ -27,7 +27,9 @@ Output Files:
 
 ## INSTRUCTIONS 
 
-The datav2.xlsx file contains the knowledge base on which the algorithm has been validated to detect whether a sentence is extortionate. 
+Download the Visual Studio Project and/or run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
+
+The process contains the following steps:
 
 First, the list of words that will form the basis of the data dictionary is created.  This list of words will be the historical cloud of words commonly used in extortion sentences.
 
@@ -65,5 +67,5 @@ Add the environment to an IDE such as Visual Studio.
 
 ## STEPS FOR REPRODUCE THE EXPERIMENTS 
 
-After installing the dependencies and loading the extortion environment, load the Visual Studio Project and/or run the Python file "ExtortionREVIEW.py"  
+After installing the dependencies and loading the extortion environment, load the   
 
