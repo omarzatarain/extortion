@@ -31,7 +31,7 @@ THE FOLLOWING STEPS ARE FOR USING A JUPYTER NOTEBOOK
 
 $conda install ipykernel  
 
-python -m ipykernel install --user --name=extortion --display-name="Python (extortion)"
+$python -m ipykernel install --user --name=extortion --display-name="Python (extortion)"
 
 
 Load the python file ExtortionREVIEW into a jupyter notebook or Add the environment to an IDE such as Visual Studio.
