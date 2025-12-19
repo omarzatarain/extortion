@@ -27,9 +27,8 @@ $conda install -c conda-forge matplotlib
 
 $conda install -c conda-forge openpyxl
 
-$ pip install pysentimiento
-
-$conda install ipykernel 
+THE FOLLOWING STEPS ARE FOR USING A JUPYTER NOTEBOOK
+$conda install ipykernel  
 
 python -m ipykernel install --user --name=extortion --display-name="Python (extortion)"
 
