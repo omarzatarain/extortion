@@ -27,6 +27,11 @@ $conda install -c conda-forge matplotlib
 
 $ pip install pysentimiento
 
+$conda install ipykernel 
+
+python -m ipykernel install --user --name=extortion --display-name="Python (extortion)"
+
+
 Add the environment to an IDE such as Visual Studio.
 
 
