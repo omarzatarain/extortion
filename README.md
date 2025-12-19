@@ -34,7 +34,8 @@ $conda install ipykernel
 python -m ipykernel install --user --name=extortion --display-name="Python (extortion)"
 
 
-Add the environment to an IDE such as Visual Studio.
+Load the python file ExtortionREVIEW into a jupyter notebook or Add the environment to an IDE such as Visual Studio.
+Load the files "datav2.xlsx" and  "gold_standard.xlsx" into the jupyter notebook folder or the visual studio project's folder.
 
 
 ## INPUT FILES  AND PRODUCED FILES
