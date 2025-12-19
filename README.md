@@ -60,7 +60,7 @@ The output files will be generated on  experiments reproduction, however, the ou
 
 ## INSTRUCTIONS 
 
-Download the Visual Studio Project and run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
+Open a Jupyter notebook or  Visual Studio Project and run the Python file "ExtortionREVIEW.py" and the input files  "datav2.xlsx" and "gold_standard.xlsx". The output files will be produced after the following steps 
 
 The process contains the following steps:
 
@@ -68,7 +68,7 @@ First, the list of words that will form the basis of the data dictionary is crea
 
 Second, the data dictionary is generated based on the list generated in the previous step. This algorithm classifies words of the “demand” type and words of the “threat” type. This analysis is based on a database of words initially entered.
 
-Third,  the algorithm classifies the phrases entered based on the dictionary created above. There are four classes: No Extortion, Extortion Type 1, Type 2, and Type3.
+Third,  the algorithm classifies the phrases entered based on the created dictionary. There are four classes: No Extortion, Extortion Type 1, Type 2, and Type3.
 
 Fourth,  the confusion matrix is obtained, where the algorithm's prediction is compared against a gold standard in gold_standard.xlsx with the real classification of the sentence (extortionate, non-extortionate).
 
