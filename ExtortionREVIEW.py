@@ -1,5 +1,4 @@
 
-
 import spacy
 from spacy.lang.es.examples import sentences 
 import pandas as pd
@@ -10,17 +9,18 @@ from sklearn.metrics import precision_score, recall_score, confusion_matrix, cla
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-def normalize(texto):
+
+def normalize(text):
     #Normalize text to lowercase, remove accents and special characters, except hyphens.
-    if not isinstance(texto, str):
+    if not isinstance(text, str):
         return ""
-    texto = texto.lower()
-    texto = ''.join(c for c in unicodedata.normalize('NFD', texto) if unicodedata.category(c) != 'Mn')
-    return texto
+    text = text.lower()
+    text = ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
+    return text
 
 def build_diccionary(df):
    
-   # Build a dictionary of unique, normalized words from the ësentencesí column of a DataFrame.
+   # Build a dictionary of unique, normalized words from the ‚Äòsentences‚Äô column of a DataFrame.
  
     dictionary = set()
     for sentence in df['sentences'].dropna():
@@ -30,7 +30,7 @@ def build_diccionary(df):
     return dictionary
 
 def classify_word(word, demand_anchors, threat_anchors, nlp):
-    #Classify a word as ëdemandí or ëthreatí using semantic similarity.
+    #Classify a word as ‚Äòdemand‚Äô or ‚Äòthreat‚Äô using semantic similarity.
     
     if not isinstance(word, str):
         return None
@@ -62,6 +62,8 @@ def classify_word(word, demand_anchors, threat_anchors, nlp):
 def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
     
     #Classify an extortion sentence into one of the three defined types.
+    result = analyzer.predict(sentence)
+    print(result.probas["NEG"])
     
     if not isinstance(sentence, str):
         return 'No Extortion'
@@ -91,7 +93,7 @@ def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
     # Classification Logic
     if not has_demand or not has_threat:
         return "No Extortion"
-    
+
     if not is_demand_imperative and is_threat_passive:
         return "Type 01: demand in active form + threat in passive form"
     
@@ -104,7 +106,8 @@ def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
     return "Type unknown/blended"
 
 if __name__ == "__main__":
-
+   
+   
    
     print(f" STARTING..")
    # Load the sentences to analyze 
@@ -140,9 +143,9 @@ if __name__ == "__main__":
 
 
 # --- Anchor words for classification ---
-# These words define the concepts of ìdemandî and ìthreat.î
-demand_anchors = nlp("pagar depositar dinero billete cuota")
-threat_anchors = nlp("matar golpear sufrir  sangre") # daÒo
+# These words define the concepts of ‚Äúdemand‚Äù and ‚Äúthreat.‚Äù
+demand_anchors = nlp("pagar depositar dinero billete cuota cupo colaboracion hacer deposito enviar cumplir")
+threat_anchors = nlp("matar golpear lastimar herir sufrir da√±ar sangre raptar morir dinamitar perder") # da√±o
 
 
 # Create the demand and threat columns.
@@ -214,6 +217,10 @@ data = pd.read_excel("gold_standard.xlsx", sheet_name="MATRIZ")
 
 #Collect results for making the comparison
 i = 0
+
+   
+
+    
 for sentence in df['sentences']:
     x = classify_sentence(df['sentences'].iloc[i],demand_verbs, threat_verbs, nlp)
     print(x)
@@ -255,3 +262,4 @@ disp.plot(cmap=plt.cm.Blues)
 plt.title('Confusion Matrix')
 plt.savefig("confusion.png", dpi=300, bbox_inches="tight")
 plt.show()
+
