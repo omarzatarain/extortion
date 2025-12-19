@@ -62,8 +62,6 @@ def classify_word(word, demand_anchors, threat_anchors, nlp):
 def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
     
     #Classify an extortion sentence into one of the three defined types.
-    result = analyzer.predict(sentence)
-    print(result.probas["NEG"])
     
     if not isinstance(sentence, str):
         return 'No Extortion'
@@ -262,4 +260,5 @@ disp.plot(cmap=plt.cm.Blues)
 plt.title('Confusion Matrix')
 plt.savefig("confusion.png", dpi=300, bbox_inches="tight")
 plt.show()
+
 
