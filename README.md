@@ -25,6 +25,8 @@ $conda install -c conda-forge scikit-learn
 
 $conda install -c conda-forge matplotlib
 
+$conda install -c conda-forge openpyxl
+
 $ pip install pysentimiento
 
 $conda install ipykernel 
