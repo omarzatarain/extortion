@@ -1,4 +1,3 @@
-
 import spacy
 from spacy.lang.es.examples import sentences 
 import pandas as pd
@@ -8,7 +7,8 @@ import os
 from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report,  accuracy_score, f1_score
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-
+import pysentimiento
+from pysentimiento import create_analyzer
 
 def normalize(text):
     #Normalize text to lowercase, remove accents and special characters, except hyphens.
@@ -19,9 +19,7 @@ def normalize(text):
     return text
 
 def build_diccionary(df):
-   
    # Build a dictionary of unique, normalized words from the ‘sentences’ column of a DataFrame.
- 
     dictionary = set()
     for sentence in df['sentences'].dropna():
         #Find words that contain letters, numbers and hyphens
@@ -31,10 +29,8 @@ def build_diccionary(df):
 
 def classify_word(word, demand_anchors, threat_anchors, nlp):
     #Classify a word as ‘demand’ or ‘threat’ using semantic similarity.
-    
     if not isinstance(word, str):
         return None
-    
     token = nlp(word.lower())
     
     # Exclude words that are not verbs or nouns, and single-letter words.
@@ -57,12 +53,12 @@ def classify_word(word, demand_anchors, threat_anchors, nlp):
     else:
         return 'Not defined'
 
+
+
 # --- Classification Functions ---
 
 def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
-    
-    #Classify an extortion sentence into one of the three defined types.
-    
+       
     if not isinstance(sentence, str):
         return 'No Extortion'
     
@@ -105,8 +101,6 @@ def classify_sentence(sentence,demand_verbs, threat_verbs, nlp ):
 
 if __name__ == "__main__":
    
-   
-   
     print(f" STARTING..")
    # Load the sentences to analyze 
     file_path = "datav2.xlsx"
@@ -119,7 +113,6 @@ if __name__ == "__main__":
         print(f"Error: The file was not found in the path: {file_path}")
         exit()
 
-   
     # Create a list of words from the data without considering stopwords.
     diccionary_sentences = build_diccionary(df)
     
@@ -142,9 +135,8 @@ if __name__ == "__main__":
 
 # --- Anchor words for classification ---
 # These words define the concepts of “demand” and “threat.”
-demand_anchors = nlp("pagar depositar dinero billete cuota cupo colaboracion hacer deposito enviar cumplir")
-threat_anchors = nlp("matar golpear lastimar herir sufrir dañar sangre raptar morir dinamitar perder") # daño
-
+demand_anchors = nlp("pagar depositar dinero billete cuota") # pay deposit money note fee
+threat_anchors = nlp("matar golpear sufrir daño sangre") # kill hit suffer damage blood
 
 # Create the demand and threat columns.
 df_clasified = pd.DataFrame(columns=['Demand Words', 'Threat Words'])
@@ -191,7 +183,6 @@ except KeyError:
     print("Error: The columns Demand Words  or Threat Words were not found in the classified dictionary.")
     exit()
 
-
 # --- Process the main sentence file ---
 
 sentences_file = "datav2.xlsx"
@@ -215,10 +206,6 @@ data = pd.read_excel("gold_standard.xlsx", sheet_name="MATRIZ")
 
 #Collect results for making the comparison
 i = 0
-
-   
-
-    
 for sentence in df['sentences']:
     x = classify_sentence(df['sentences'].iloc[i],demand_verbs, threat_verbs, nlp)
     print(x)
@@ -252,7 +239,6 @@ print ('Recall:', recall_score(data['REAL'], data['PREDICTED'], pos_label="EXTOR
 print ('Precision:', precision_score(data['REAL'], data['PREDICTED'], pos_label="EXTORTION"))
 print ('\nClassification report:\n', classification_report(data['REAL'], data['PREDICTED']))
 
-
 # Plot the confusion matrix
 display_labels = ["EXTORTION","NO EXTORTION"]
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
@@ -260,5 +246,3 @@ disp.plot(cmap=plt.cm.Blues)
 plt.title('Confusion Matrix')
 plt.savefig("confusion.png", dpi=300, bbox_inches="tight")
 plt.show()
-
-
