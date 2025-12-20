@@ -7,8 +7,7 @@ import os
 from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report,  accuracy_score, f1_score
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-import pysentimiento
-from pysentimiento import create_analyzer
+
 
 def normalize(text):
     #Normalize text to lowercase, remove accents and special characters, except hyphens.
@@ -246,3 +245,4 @@ disp.plot(cmap=plt.cm.Blues)
 plt.title('Confusion Matrix')
 plt.savefig("confusion.png", dpi=300, bbox_inches="tight")
 plt.show()
+
